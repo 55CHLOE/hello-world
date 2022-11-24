@@ -766,3 +766,216 @@ int main()
 //	printf("%d,%d\n", *(a + 1), *(ptr - 1));
 //	return 0;
 //}
+
+#define _CRT_SECURE_NO_WARNINGS 1
+
+
+#include<stdio.h>
+#include<stdlib.h>
+//F5开始调试 与F9(断点)搭配使用
+//F5与F9 可以让我们快速的跳到问题所在的区域
+//F5是跳到断点处，跳到的是执行逻辑上的下一个断点，而不是物理上的下一个断点
+//int main()
+//{
+//	int i = 0;
+//	for (i = 0; i < 100; i++)
+//	{
+//		printf("%d ", i);
+//	}
+//	for (i = 0; i < 100; i++)
+//	{
+//		printf("%d ",10 - i);
+//	}
+//	return 0;
+//}
+
+//void my_strcpy(char* dest,char* src)
+//{
+//	while (*src != '\0')
+//	{
+//		*dest = *src;
+//		src++;
+//		dest++;
+//	}
+//	*dest = *src;//'\0'
+//}
+//void my_strcpy(char* dest, char* src)
+//{
+//	if (dest != NULL && src != NULL)//很好的规避了问题，但不利于发现问题
+//	{
+//		while (*dest++ = *src++)//直接进行解引用容易形成野指针
+//		{
+//			;//直到拷贝'\0'，为假，循环停下来
+//		}
+//	}
+//}
+#include<assert.h>
+//
+//char* my_strcpy(char* dest,const char* src)//const修饰*scr,使得*scr不可被更改↓
+//{
+//	char* ret = dest;//先把dest地址保存在ret中
+//	assert(dest != NULL);//断言
+//	assert(src != NULL);//断言
+//	//把src指向的字符串拷贝到dest指向的空间，包含'\0'字符
+//	while (*dest++ = *src++)//↑
+//	{
+//			;
+//	}
+//	return ret;//返回目的地的起始地址
+//}
+//int main()
+//{
+//	//strcpy
+//	//字符串拷贝
+//	char arr1[] = "###";
+//	char arr2[] = "bit";
+//	;
+//	printf("%s\n",my_strcpy(arr1,arr2) );
+//	//一个函数的返回值作为另一个函数的参数 - 链式访问
+//	return 0;
+//}
+
+//int main()
+//{
+//	const int num = 10;
+//	int n = 100;
+//
+//	int* const p = &num;
+//	//const可以放在*的左边和右边，且分别代表着不同的意思
+//	//const放在指针变量的*左边时，修饰的是*p,也就是说：不能通过p来改变*p(num)的值
+//	//const放在指针变量的*右边时，修饰的是指针变量p本身，p不能被改变
+//	*p = 20;
+//	p = &n;
+//
+//	printf("%d\n", num);
+//
+//	return 0;
+//}
+//int my_strlen(const char* str)
+//{
+//	int count = 0;
+//	assert(str != NULL);//指针str,必然进行解引用操作，故先进行断言，保证指针的有效性
+//	//使得代码更精壮
+//	while (*str != '\0')//求长度就是在找里面的'\0'
+//	{
+//		count++;
+//		str++;
+//	}
+//	return count;
+//}
+//int main()
+//{
+//	char arr[] = "abcdef";
+//	int len = my_strlen(arr);
+//	printf("%d\n", len);
+//	return 0;
+//}
+
+//check_sys()
+//{
+//	int a = 1;
+//	char* p = (char*)&a;
+//	//返回1，小端
+//	//返回0，大端
+//	return *p;
+//}
+
+//check_sys()
+//{
+//	int a = 1;
+//	return *(char*)&a;
+//}
+//int main()
+//{
+//	//写一段代码告诉我们当前机器的字节序是什么
+//	//返回1，小端
+//	//返回0，大端
+//	int ret = check_sys();//函数更加独立，功能不会与其他内容交互
+//	if (ret == 1)
+//	{
+//		printf("小端\n");
+//	}
+//	else
+//	{
+//		printf("大端\n");
+//	}
+//	return 0;
+//}
+
+////输出什么？
+//#include<stdio.h>
+//int main()
+//{
+//	char a = -1;
+//	//1000000000000000000000000000001 - 原码
+//	//1111111111111111111111111111110 - 反码
+//	//1111111111111111111111111111111 - 补码
+//	//11111111 - 输入
+//	//输出时，从字符类型转变为整形，需要进行整形提升-根据符号位，高位补符号位到32位
+//	//1111111111111111111111111111111 - 整形提升之后的结果 - 补码
+//	//输出时，输出的是原码，倒回去算
+//
+//
+//	signed char b = -1;
+//	//11111111
+//	unsigned char c = -1;
+//	//11111111
+//	//无符号char，高位不是符号位，如何整形提升？→高位补0
+//	//00000000000000000000000011111111 - 整形提升后的结果 - 补码
+//	//打印的时候一看高位是0，是正数，原反补码相同
+//
+//	printf("a=%d,b=&d,c=%d", a, b, c);
+//	//a = -1，b = -1,c = 255
+//	return 0;
+//}
+//#include<stdio.h>
+//int  main()
+//{
+//	char a = -128;
+//	//首先写成2进制序列
+//	//10000000000000000000000010000000 - 原码
+//	//11111111111111111111111101111111 - 反码
+//	//11111111111111111111111110000000 - 补码
+//	//10000000 - 1个字符，1个字节，8个比特位
+//	//11111111111111111111111110000000 - 整形提升之后的结果 - 补码 也是原码↓
+//
+//	printf("%u\n", a);
+//	//%d - 打印十进制的有符号数字
+//	//&u - 打印十进制的无符号数字 - 我认为内存中放置的是无符号数 - 那么原反补码相同↑
+//	return 0;
+//}
+//#include<windows.h>
+//int main()
+//{
+//	unsigned int i;
+//	for (i = 9; i >= 0; i--)
+//	{
+//		printf("%u\n", i);//死循环，因为i永远为正不可能为负
+//		Sleep(100);
+//	}
+//	return 0;
+//}
+
+//int main()
+//{
+//	char a[1000];
+//	int i;
+//	for (i = 0; i < 1000; i++)
+//	{
+//		a[i] = -1 - i;
+//	}
+//	printf("%d\n", strlen(a));//128+127=255
+//	return 0;
+//}
+
+//#include<stdio.h>
+//
+//unsigned char i = 0;//0-255
+//int main()
+//{
+//	for (i = 0; i <= 255; i++)//这个条件恒成立
+//	{
+//		printf("hello world\n");//陷入死循环
+//	}
+//	return 0;
+//}
