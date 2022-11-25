@@ -979,3 +979,135 @@ int main()
 //	}
 //	return 0;
 //}
+
+//int main()
+//{
+//	unsigned long pulArray[] = { 6,7,8,9,10 };
+//	unsigned long* pulPtr;
+//
+//	pulPtr = pulArray;
+//	*(pulPtr + 3) += 3;//此时数组内容被改成了：{6,7,8,12,10}
+//
+//	printf("%d,%d\n", *pulPtr, *(pulPtr + 3));
+//	return 0;
+//}
+//#include<string.h>
+//#include<assert.h>
+//void reverse(char* str)
+//{
+//	assert(str);//在使用str指针的时候，要保证str指针的有效性 - 断言
+//	int len = strlen(str);
+//
+//	char* left = str;
+//	char* right = str + len - 1;
+//
+//	while (left<right)//整个循环
+//	{
+//		char tmp = *left;
+//		*left = *right;
+//		*right = tmp;
+//		left++;
+//		right--;//一次循环要做的事情
+//	}
+//}
+//int main()
+//{
+//	char arr[256] = { 0 };//开辟一个空间
+//	//scanf("%s", arr);//把字符串录入到内存空间里去//scanf遇到空格就会停下来
+//	gets(arr);//读取一行
+//
+//	//逆序函数
+//	reverse(arr);
+//	printf("逆序后的字符串:%s\n", arr);
+//	return 0;
+//}
+
+//int main()
+//{
+//	int a = 0;
+//	int n = 0;
+//	scanf("%d%d", &a, &n);//2  5
+//	int sum = 0;
+//	int i = 0;
+//	int ret = 0;
+//	//2 22 222 2222 22222
+//	//
+//	for (i = 0; i < n; i++)
+//	{
+//		ret = ret * 10 + a;
+//		sum += ret ;
+//	}
+//	printf("%d\n", sum);
+//	return 0;
+//}
+//#include<math.h>
+//int main()
+//{
+//	int i = 0;
+//	for (i = 0; i <= 100000; i++)
+//	{
+//		//判断i是否为水仙花数(自幂数)
+//		//1.计算i的位数 - n位数
+//		int n = 1;
+//		int tmp = i;
+//		int sum = 0;
+//		while (tmp /= 10)
+//		{
+//			n++;
+//		}
+//		//2.计算i的每一位的n次方之和 sum
+//		tmp = i;
+//		while (tmp)
+//		{
+//			sum += pow(tmp % 10, n);
+//			tmp /= 10;
+//		}
+//	    //3.比较i == sum
+//		if (i == sum)
+//		{
+//			printf("%d ", i);
+//		}
+//	}
+//	return 0;
+//}
+
+int main()
+{
+	int line = 0;
+	scanf("%d", &line);
+	//打印上半部分
+	int i = 0;
+	for (i = 0; i < line; i++)
+	{
+		//打印空格
+		int j = 0;
+		for (j = 0; j < line - 1 - i; j++)
+		{
+			printf(" ");
+		}
+		//打印*
+		for (j = 0; j < 2 * i + 1; j++)
+		{
+			printf("*");
+		}
+		printf("\n");
+	 }
+
+	//打印下半部分
+	for (i = 0; i < line - 1; i++)
+	{
+		int j = 0;
+		//打印空格
+		for (j = 0; j <=i; j++)
+		{
+			printf(" ");
+		}
+		//打印*
+		for (j = 0; j <2*(line-1-i)-1; j++)
+		{
+			printf("*");
+		}
+		printf("\n");
+	}
+	return 0;
+}
