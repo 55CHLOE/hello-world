@@ -1130,3 +1130,142 @@ int main()
 //	printf("total = %d\n", total);
 //	return 0;
 //}
+
+//void print(int arr[], int sz)
+//{
+//	int i = 0;
+//	for (i = 0;i < sz; i++)
+//	{
+//		printf("%d ", arr[i]);
+//	}
+//	printf("\n");
+//}
+//void move(int arr[], int sz)
+//{
+//	int left = 0;
+//	int right = sz - 1;
+//	//从左边找偶数
+//	while (left<right)
+//	{
+//		while ((left < right) && (arr[left] % 2 == 1))
+//		{
+//			left++;
+//		}
+//		//从右边找奇数
+//		while ((left < right) && (arr[right] % 2 == 0))
+//		{
+//			right--;
+//		}
+//		if (left < right)
+//		{
+//			int tmp = arr[left];
+//			arr[left] = arr[right];
+//			arr[right] = tmp;
+//		}
+//	}
+//}
+//int main()
+//{
+//	int arr[] = { 1,2,3,4,5,6,7,8,9,10 };
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	move(arr,sz);
+//	//1.从左边开始找一个偶数
+//	//2.从右边开始找一个奇数
+//	//3.把它们交换
+//	print(arr, sz);
+//	return 0;
+//}
+
+//void left_move(char arr[],int k)
+//{
+//
+//}
+
+
+#include<string.h>
+#include<assert.h>
+
+//void left_move(char* arr, int k)
+//{
+//	assert(arr != NULL);
+//	//只要函数参数中有指针，函数实现中必定会对指针进行解引用，此时需要判断指针的有效性，需断言判断指针是否为空指针
+//	int i = 0;
+//	int len = strlen(arr);
+//	for (i = 0; i < k; i++)
+//	{
+//		//左旋转一个字符
+//		//1.把第一个元素拿起来，放到临时变量里面去
+//		char tmp = *arr;
+//		//2.把第一个元素后面所有的元素统统往前挪
+//		int j = 0;
+//		for (j = 0; j <len-1 ; j++)
+//		{
+//			*(arr + j) = *(arr + j + 1);
+//		}
+//		//3
+//		*(arr + len - 1) = tmp;
+//	}
+//}
+//逆序字符串的函数
+void reverse(char* left, char* right)
+{
+	assert(left != NULL);
+	assert(right != NULL);
+	while (left<right)
+	{
+		char tmp = *left;
+		*left = *right;
+		*right = tmp;
+		left++;
+		right--;
+	}
+}
+void left_move(char* arr, int k)
+{
+	assert(arr);
+	int len = strlen(arr);
+	assert(k <= len);
+	reverse(arr,arr+k-1);//逆序左边
+	reverse(arr+k,arr+len-1);//逆序右边
+	reverse(arr,arr+len-1);//逆序整体
+}
+//abcdef
+//bcdefa
+//cdefab
+//defabc
+//efabcd
+//fabcde
+int is_left_move(char* s1, char* s2)
+{
+	int len = strlen(s1);
+	int i = 0;
+	for (i = 0; i < len; i++)
+	{
+		left_move(s1, 1);
+		int ret = strcmp(s1, s2);
+		if (ret == 0)
+			return 1;
+	}
+	//
+	return 0;
+}
+int main()
+{
+	char arr1[] = "abcdef";
+	char arr2[] = "cdefab";
+	int ret = is_left_move(arr1, arr2);
+	if (ret == 1)
+		printf("Yes\n");
+	else
+		printf("No\n");
+	return 0;
+}
+//int main()
+//{
+//	char arr[] = "abcdef";//因为在旋转字符串下，字符串可以被修改，故使用数组来定义，若使用常量字符串则不能被修改
+//	left_move(arr, 2);
+//
+//	printf("%s\n", arr);
+//
+//	return 0;
+//}
