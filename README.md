@@ -1366,3 +1366,192 @@ int main()
 	}
 	return 0;
 }
+
+#include<stdio.h>
+#include<stdlib.h>
+
+//int count_bit_one(int n)
+//{
+//	int count = 0;
+//	while (n)
+//	{
+//		n = n & (n - 1);
+//		count++
+//	}
+//	return count;
+//}
+////n = n&(n-1)
+//n
+//13
+//1101 n
+//1100 n-1
+//1100 n
+//1011 n-1
+//1000 n
+//0111 n-1
+//0000 n
+//在这种算法里，会让n(不为0)的二进制序列里面最右边的1消失
+//在n在变成0之间，n = n&(n-1) 能执行几次，就说明n的二进制序列中有几个1
+//int main()
+//{
+//	int a = 13;//测试的数字
+//	scanf("%d", &a);//录入，进去了
+//	//写一个函数求a的二进制(补码)表示中有几个1
+//	int count = count_bit_one(a);//这样一个函数，把a传进去，再用count存储它的位数//-1
+//	//-1
+//	//10000000000000000000000000000001
+//	//11111111111111111111111111111110
+//	//11111111111111111111111111111111 - 把该数字与1进行按位与，得到的数是几就说明该数字最低位是几
+//	//00000000000000000000000000000001
+//	
+//	//13 获取这个10进制数中有多少个1
+//	//00000000000000000000000000001101
+//	printf("count = %d\n", count);
+//	system("pause");//system库函数-执行系统命令-pause(暂停) - 在代码逻辑的最后，return 0的前面
+//	return 0;
+//}
+
+//异或：二者相同则为1，相异则为0,
+//int get_diff_bit(int m, int n)
+//{
+//	int tmp = m ^ n;
+//	int count = 0;
+//	while (tmp)
+//	{
+//		tmp = tmp & (tmp - 1);
+//		count++;
+//	}
+//	return count;
+//}
+//int main()
+//{
+//	int m = 0;
+//	int n = 0;
+//	scanf("%d%d", &m, &n);
+//	//写一个函数来实现
+//	int count = get_diff_bit(m, n);
+//	printf("count = %d\n", count);
+//	return 0;
+//}
+//10 - 00000000000000000000000000001010
+//void print(int m)
+//{
+//	int i = 0;
+//	printf("奇数位:\n");
+//	for (i = 30; i >= 0; i -= 2)
+//	{
+//		printf("%d ", (m >> i) & 1);
+//	}
+//	printf("\n");
+//	printf("偶数位:\n");
+//	for (i = 31; i >= 1; i -= 2)
+//	{
+//		printf("%d ", (m >> i) & 1);
+//	}
+//	printf("\n");
+//}
+//int main()
+//{
+//	int m = 0;
+//	scanf("%d", &m);
+//	print(m);
+//	return 0;
+//}
+//void print(int *p, int sz)
+//{
+//	int i = 0;
+//	for (i = 0; i < sz; i++)
+//	{
+//		printf("%d ", *(p + i));
+//	}
+//}
+//int main()
+//{
+//	int arr[] = {1,2,3,4,5,6,7,8,9};
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	print(arr, sz);//把数组和元素个数传过去
+//	return 0;
+//}
+//void print_table(int n)
+//{
+//	int i = 0;
+//	for (i = 1; i <= n; i++)
+//	{
+//		int j = 0;
+//		for (j = 1; j <= i; j++)
+//		{
+//			printf("&d*%d = %-3d", i, j, i * j);//%-md:输出数据左对齐，右补空格
+//			//%-3d:打印3个位置的数并向左对齐
+//		}
+//		printf("\n");
+//	}
+//}
+//int main()
+//{
+//	int n = 0;
+//	scanf("%d", &n);
+//	print_table(n);
+//	return 0;
+//}
+//#include<string.h>
+//
+//void reverse_string(char arr[])
+//{
+//	char tmp = arr[0];
+//	int len = my_strlen(arr);
+//	arr[0] = arr[len - 1];
+//	arr[len - 1] = '\0';
+//	if(my_strlen(arr+1)>=2)//调用函数的条件
+//	   reverse_string(arr + 1);
+//	arr[len - 1] = tmp;
+//}
+//int main()
+//{
+//	char arr[] = "abcdef";//fedcba
+//	reverse_string(arr);
+//	printf("%s\n", arr);
+//	return 0;
+//}
+//DigitSum(1729)
+//DigitSum(172)+1729%10
+//DigitSum(17)+172%10+1729%10
+//DigitSum(1)+17%10+172%10+1729%10
+//1+7+2+9
+//int DigitSum(unsigned int num)
+//{
+//	if (num > 9)
+//	{
+//		return DigitSum(num / 10) + num % 10;
+//	}
+//	else
+//	{
+//		return num;
+//	}
+//}
+//int main()
+//{
+//	unsigned int num = 0;
+//	scanf("%d", &num);//1729
+//	int ret = DigitSum(num);
+//	printf("ret = %d\n", ret);
+//	return 0;
+//}
+//double Pow(int n, int k)
+//{
+//	//n^k = n*n^(k-1)
+//	if (k < 0)
+//		return (1.0 / (Pow(n, -k)));
+//	else if (k = 0)
+//		return 1;
+//	else
+//		return n * Pow(n, k - 1);
+//}
+//int main()
+//{
+//	int n = 0;
+//	int k = 0;
+//	scanf("%d%d", n, k);
+//	int ret = Pow(n,k);
+//	printf("ret = %lf\n", ret);
+//	return 0;
+//}
