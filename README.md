@@ -1555,3 +1555,126 @@ int main()
 //	printf("ret = %lf\n", ret);
 //	return 0;
 //}
+
+//描述一个学生 - 一些数据
+//名字
+//年龄
+//电话
+//性别
+//strcut 结构体关键字  Stu 结构体标签   struct Stu 结构体类型
+//struct Stu//结构体声明是一条语句，故最后的封号不能少
+//{
+//	//成员变量
+//	char name[20];
+//	short age;         //定义一个结构体类型  -  图纸
+//	char tale[12];
+//	char sex[5];
+//}s1,s2,s3;//此处封号不能少//s1,s2,s3是三个全局的结构体变量
+
+//typedef struct Stu//typedef - 给这段结构体类型重新起个名字
+//{
+//	//成员变量
+//	char name[20];
+//	short age;         
+//	char tale[12];
+//	char sex[5];
+//}Stu;//名字简化为Stu
+//int main()
+//{
+//	struct Stu s1 = {"张三",20,"15249287076","男"};//结构体类型初始化
+//	Stu s2 = {"旺财",30,"15596668862","保密"};
+//	return 0;
+//}
+
+//struct S
+//{
+//	int a;
+//	char c;
+//	char arr[20];
+//	double d;
+//};
+//
+//struct T
+//{
+//	char ch[10];
+//	struct S s;//结构体当中包含了一个结构体作为它的成员
+//	char* pc;
+//};
+//
+//int main()
+//{
+//	char arr[] = "hello bit\n";
+//	struct T t = { "hehe",{100,'w',"hello world",3.14},arr };
+//	printf("%s\n", t.ch);//hehe
+//	printf("%s\n", t.s.arr);//hello world
+//	printf("%lf\n", t.s.d);//3.14
+//	printf("%s\n", t.pc);//hello bit
+//	return 0;
+//}
+//typedef struct Stu
+//{
+//	//成员变量
+//	char name[20];
+//	short age;
+//	char tele[12];
+//	char sex[5];
+//}Stu;
+//
+//void Print1(Stu tmp)
+//{
+//	printf("name:%s\n", tmp.name);
+//	printf("age:%d\n", tmp.age);
+//	printf("tele:%s\n", tmp.tele);
+//	printf("sex:%s\n", tmp.sex);
+//}
+//
+//void Print(Stu* ps)
+//{
+//	printf("name:%s\n", ps->name);
+//	printf("age:%d\n", ps->age);
+//	printf("tele:%s\n", ps->tele);
+//	printf("sex:%s\n", ps->sex);
+//}
+//int main()
+//{
+//	Stu s = { "李四",40,"15598886888","男" };
+//	//分装一个函数打印这个结构体数据
+//	//Print1和Print2 哪个更好？ --->首选Print2
+//	//Print1把s的内容拷贝到tmp中需要时间，且空间占用过大
+//	//Print2取地址仅占用4或8个字节，结构体指针变量占用空间小
+//	Print1(s);
+//	Print(&s);
+//	return 0;
+//}
+
+//int Add(int x, int y)
+//{
+//	int z = 0;
+//	z = x + y;
+//	return z;
+//}
+//int main()
+//{
+//	int a = 10;
+//	int b = 20;
+//	int ret = 0;
+//	ret = Add(a,b)
+//	return 0;
+//}
+
+
+int main()
+{
+	int i = 0;
+	int a = 0;
+	int b = 0;
+	int c = 0;
+	scanf("%d", &i);
+	a = i / 100;
+	i = i % 100;
+	b = i / 10;
+	i = i % 10;
+	c = i / 1;
+	printf("%d%d%d", c, b, a);
+	return 0;
+}
